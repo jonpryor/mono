@@ -1543,10 +1543,12 @@ namespace CorCompare
 					if ((info.Attributes & (ParameterAttributes.Out | ParameterAttributes.In)) == ParameterAttributes.Out)
 						modifier = "out";
 					else
-						modifier = "ref";
+						modifier = string.Empty;
 
-					signature.Append (modifier);
-					signature.Append (" ");
+					if (modifier.Length > 0) {
+						signature.Append (modifier);
+						signature.Append (" ");
+					}
 				}
 
 				signature.Append (Utils.CleanupTypeName (info.ParameterType));
